@@ -132,4 +132,32 @@ select , input {
     flex: 1;
 }
 
-// 28:38 / 57:19 o video termina;
+/* todo list */ 
+
+.todo {
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    transition: .3s;
+}
+
+.todo h3 {
+   flex: 1;
+   font-size: 0.9rem; 
+}
+
+.todo button {
+    margin-left: .4rem;
+}
+
+.done {
+    background-color: #395169;
+}
+
+.done h3 {
+    color: #fff;
+    text-decoration: line-through;
+    font-style: italic;
+}
