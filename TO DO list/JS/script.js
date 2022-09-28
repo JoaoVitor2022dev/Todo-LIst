@@ -9,9 +9,42 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 
 /* fruncion */ 
 
+const saveToDo = (text) => {
+   
+  const todo = document.createElement("div");
+  todo.classList.add("todo");  
+ 
+  const todoTitle = document.createElement("h3");
+  todoTitle.innerText = text;    
+  todo.appendChild(todoTitle); 
+  
+  const doneBtn = document.createElement("button");
+  doneBtn.innerHTML = '<i class="fa-solid fa-check"></i>' 
+  todo.appendChild(doneBtn);
+  
+  const editBtn = document.createElement("button"); 
+  editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>'
+  todo.appendChild(editBtn); 
+
+  const removeBtn = document.createElement("button");
+  removeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'
+  todo.appendChild(removeBtn);
+
+  todoList.appendChild(todo);
+
+}
+
 /* events*/ 
 
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault(); 
-  console.log("enviou form"); 
-} ); 
+  
+ const inputValue = todoInput.value;
+ 
+ if (inputValue) {
+    saveToDo(inputValue); 
+ }
+});
+
+
+/* o video termina em 39:35 */ 
