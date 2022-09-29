@@ -9,7 +9,7 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 
 /* fruncion */ 
 
-const saveToDo = (text) => {
+const saveToDo = text => {
    
   const todo = document.createElement("div");
   todo.classList.add("todo");  
@@ -32,6 +32,9 @@ const saveToDo = (text) => {
 
   todoList.appendChild(todo);
 
+  todoInput.value = "";
+  todoInput.focus();
+
 }
 
 /* events*/ 
@@ -47,4 +50,10 @@ todoForm.addEventListener("submit", (e) => {
 });
 
 
-/* o video termina em 39:35 */ 
+document.addEventListener("click", e => {
+  const targetEl = e.target; 
+
+  if (targetEl.classList.contains("finish-todo")) {
+    console.log("clicou no finalizador");
+  }
+});
