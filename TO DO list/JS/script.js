@@ -52,8 +52,10 @@ todoForm.addEventListener("submit", (e) => {
 
 document.addEventListener("click", e => {
   const targetEl = e.target; 
+  const parentEl = targetEl.closest("div"); 
 
   if (targetEl.classList.contains("finish-todo")) {
-    console.log("clicou no finalizador");
+     parentEl.classList.toggle("done"); 
   }
-});
+
+}); 
