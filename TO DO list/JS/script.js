@@ -1,4 +1,5 @@
 /* selecao de elementos */ 
+/* selecao de elementos */ 
 
 const todoForm = document.querySelector("#todo-form"); 
 const todoInput = document.querySelector("#todo-input"); 
@@ -54,8 +55,16 @@ document.addEventListener("click", e => {
   const targetEl = e.target; 
   const parentEl = targetEl.closest("div"); 
 
+  /* esse 1 if é para coloca como feito */ 
+
   if (targetEl.classList.contains("finish-todo")) {
      parentEl.classList.toggle("done"); 
   }
+
+  /* esse 2 if é para remover do painel, apenas remove */ 
+
+ if (targetEl.classList.contains("remove-todo")) {
+    parentEl.remove(); 
+ }
 
 }); 
