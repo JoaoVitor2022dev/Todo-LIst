@@ -1,5 +1,4 @@
 /* selecao de elementos */ 
-/* selecao de elementos */ 
 
 const todoForm = document.querySelector("#todo-form"); 
 const todoInput = document.querySelector("#todo-input"); 
@@ -11,7 +10,9 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 /* fruncion */ 
 
 const saveToDo = text => {
-   
+    
+   /* criando uma div */ 
+
   const todo = document.createElement("div");
   todo.classList.add("todo");  
  
@@ -31,16 +32,26 @@ const saveToDo = text => {
   removeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'
   todo.appendChild(removeBtn);
 
+
+  /* colocando essa div no di.tudolist*/ 
+  
   todoList.appendChild(todo);
 
   todoInput.value = "";
   todoInput.focus();
-
 }
+
+const toggleForm = () => {
+   editform.classList.toggle("hide");
+   todoForm.classList.toggle("hide");
+   todoList.classList.toggle("hide");   
+}
+
 
 /* events*/ 
 
-todoForm.addEventListener("submit", (e) => {
+/* serve para criar as tabelas */ 
+todoForm.addEventListener("submit", e => {
   e.preventDefault(); 
   
  const inputValue = todoInput.value;
@@ -50,21 +61,27 @@ todoForm.addEventListener("submit", (e) => {
  }
 });
 
-
+/* serve para cada evento que tem nos 3 button */ 
 document.addEventListener("click", e => {
   const targetEl = e.target; 
   const parentEl = targetEl.closest("div"); 
-
   /* esse 1 if é para coloca como feito */ 
-
   if (targetEl.classList.contains("finish-todo")) {
      parentEl.classList.toggle("done"); 
   }
-
   /* esse 2 if é para remover do painel, apenas remove */ 
-
  if (targetEl.classList.contains("remove-todo")) {
     parentEl.remove(); 
  }
+ /* esse 3 if é para o edit */ 
+ if (targetEl.classList.contains("edit-todo")) {
+    toggleForm();  
+ }
+}); 
 
+
+cancelEditBtn.addEventListener("click", e => {
+   e.preventDefault(); 
+
+   toggleForm(); 
 }); 
