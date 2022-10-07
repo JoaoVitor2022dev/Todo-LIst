@@ -47,7 +47,6 @@ const toggleForm = () => {
    todoList.classList.toggle("hide");   
 }
 
-
 /* events*/ 
 
 /* serve para criar as tabelas */ 
@@ -65,6 +64,11 @@ todoForm.addEventListener("submit", e => {
 document.addEventListener("click", e => {
   const targetEl = e.target; 
   const parentEl = targetEl.closest("div"); 
+  let todoTitles; 
+
+  if (parentEl && parentEl.querySelector("h3")) {
+      todoTitles = parentEl.querySelector("h3").innerHTML; 
+  }
   /* esse 1 if é para coloca como feito */ 
   if (targetEl.classList.contains("finish-todo")) {
      parentEl.classList.toggle("done"); 
