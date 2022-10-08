@@ -7,6 +7,8 @@ const editform = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input"); 
 const cancelEditBtn = document.querySelector("#cancel-edit-btn"); 
 
+let oldInputValue; 
+
 /* fruncion */ 
 
 const saveToDo = text => {
@@ -47,6 +49,16 @@ const toggleForm = () => {
    todoList.classList.toggle("hide");   
 }
 
+
+const updateTodo = (editInputValue) =>  {
+   
+  
+ const todos = document.querySelectorAll("todos"); 
+
+
+}
+
+
 /* events*/ 
 
 /* serve para criar as tabelas */ 
@@ -66,6 +78,9 @@ document.addEventListener("click", e => {
   const parentEl = targetEl.closest("div"); 
   let todoTitles; 
 
+  /*console.log(targetEl);
+  console.log(parentEl);*/  
+
   if (parentEl && parentEl.querySelector("h3")) {
       todoTitles = parentEl.querySelector("h3").innerHTML; 
   }
@@ -80,6 +95,8 @@ document.addEventListener("click", e => {
  /* esse 3 if é para o edit */ 
  if (targetEl.classList.contains("edit-todo")) {
     toggleForm();  
+    editInput.value = todoTitles; 
+    oldInputValue.value = todoTitles; 
  }
 }); 
 
@@ -88,4 +105,18 @@ cancelEditBtn.addEventListener("click", e => {
    e.preventDefault(); 
 
    toggleForm(); 
+}); 
+
+
+editform.addEventListener('submit', e => {
+   e.preventDefault();
+
+  const editInputValue = editInput.value; 
+
+   if (editInputValue) {
+      updateTodo(editInputValue)      
+   }
+
+   toggleForm() // essa function serve para a estrutura inicialç voltar ao normal  */ 
+
 }); 
