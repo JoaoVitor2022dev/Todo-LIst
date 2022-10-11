@@ -8,8 +8,8 @@ const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn"); 
 
 let oldInputValue; 
-
-/* fruncion */ 
+ 
+                                 /* fruncion */  
 
 const saveToDo = text => {
     
@@ -23,16 +23,19 @@ const saveToDo = text => {
   todo.appendChild(todoTitle); 
   
   const doneBtn = document.createElement("button");
+  doneBtn.classList.add("finish-todo"); 
   doneBtn.innerHTML = '<i class="fa-solid fa-check"></i>' 
   todo.appendChild(doneBtn);
   
   const editBtn = document.createElement("button"); 
+  editBtn.classList.add("edit-todo");
   editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>'
   todo.appendChild(editBtn); 
 
-  const removeBtn = document.createElement("button");
-  removeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'
-  todo.appendChild(removeBtn);
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("remove-todo"); 
+  deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'
+  todo.appendChild(deleteBtn);
 
 
   /* colocando essa div no di.tudolist*/ 
@@ -50,12 +53,16 @@ const toggleForm = () => {
 }
 
 
-const updateTodo = (editInputValue) =>  {
+const updateTodo = (editInputValue) =>  {  
+ const todos = document.querySelectorAll(".todo"); 
+
+ todos.forEach((todo) => {
+   let todoTitle = todo.querySelector("h3");
    
-  
- const todos = document.querySelectorAll("todos"); 
-
-
+   if (todoTitle.innerText === oldInputValue) {
+      todoTitle.innerText =  editInputValue; 
+   }
+ });
 }
 
 
@@ -78,8 +85,8 @@ document.addEventListener("click", e => {
   const parentEl = targetEl.closest("div"); 
   let todoTitles; 
 
-  /*console.log(targetEl);
-  console.log(parentEl);*/  
+  /*console.log(targetEl);*/
+  console.log(parentEl);
 
   if (parentEl && parentEl.querySelector("h3")) {
       todoTitles = parentEl.querySelector("h3").innerHTML; 
@@ -96,7 +103,7 @@ document.addEventListener("click", e => {
  if (targetEl.classList.contains("edit-todo")) {
     toggleForm();  
     editInput.value = todoTitles; 
-    oldInputValue.value = todoTitles; 
+    oldInputValue = todoTitles; 
  }
 }); 
 
@@ -120,3 +127,5 @@ editform.addEventListener('submit', e => {
    toggleForm() // essa function serve para a estrutura inicialç voltar ao normal  */ 
 
 }); 
+
+
