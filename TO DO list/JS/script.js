@@ -65,8 +65,7 @@ const updateTodo = (editInputValue) =>  {
  });
 }
 
-
-/* events*/ 
+                                   /* events*/ 
 
 /* serve para criar as tabelas */ 
 todoForm.addEventListener("submit", e => {
@@ -127,5 +126,3 @@ editform.addEventListener('submit', e => {
    toggleForm() // essa function serve para a estrutura inicialç voltar ao normal  */ 
 
 }); 
-
-
